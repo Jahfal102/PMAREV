@@ -32,7 +32,7 @@ if file is not None:
     st.image(image, use_column_width=True)
 
     # classify image
-    class_name, conf_score = classify(image, model, class_names)
+    class_name, conf_score = classify(image, model1, model2, class_names)
 
     # write classification
     st.write("## {}".format(class_name))
