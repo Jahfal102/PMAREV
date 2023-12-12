@@ -7,7 +7,7 @@ from PIL import ImageOps, Image
 import base64
 import streamlit as st
 
-def classify(image, model1, model2, class_names):
+def classify(image, model, class_names):
     # Resize image to (224, 224)
     image = ImageOps.fit(image, (224, 224), Image.Resampling.LANCZOS)
 
