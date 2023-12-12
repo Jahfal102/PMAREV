@@ -18,7 +18,8 @@ st.header('Please upload a chest X-ray image')
 file = st.file_uploader('', type=['jpeg', 'jpg', 'png'])
 
 # load classifier
-model = load_model('./model/PMA2.h5')
+model1 = load_model('./model/PMA2.h5')
+model2 = load_model('./model/pneumonia_classifier.h5')
 
 # load class names
 with open('./model/labels.txt', 'r') as f:
