@@ -18,8 +18,7 @@ st.header('Please upload a chest X-ray image')
 file = st.file_uploader('', type=['jpeg', 'jpg', 'png'])
 
 # load classifier
-model1 = load_model('./model/PMA2.h5')
-model2 = load_model('./model/pneumonia_classifier.h5')
+model = load_model('./model/model.h5')
 
 # load class names
 with open('./model/labels.txt', 'r') as f:
@@ -32,7 +31,7 @@ if file is not None:
     st.image(image, use_column_width=True)
 
     # classify image
-    class_name, conf_score = classify(image, model1, model2, class_names)
+    class_name, conf_score = classify(image, model, class_names)
 
     # write classification
     st.write("## {}".format(class_name))
