@@ -49,8 +49,6 @@ if file is not None:
     image = Image.open(file).convert('RGB')
     st.image(image, use_column_width=True)
 
-    # Classify image
-    class_name, conf_score = classify(image, model, class_names)
 
     # Write classification
     st.write("## {}".format(class_name))
