@@ -20,7 +20,7 @@ st.header('Please upload a chest X-ray image')
 file = st.file_uploader('', type=['jpeg', 'jpg', 'png'])
 
 # Load classifier
-model = load_model('./model/PMA3.h5')
+model = load_model('./model/PMA4.h5')
 
 # Compile the model
 optimizer = Adam(lr=0.01)  # Adjust the learning rate as needed
