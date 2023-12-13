@@ -27,9 +27,22 @@ optimizer = Adam(lr=0.01)  # Adjust the learning rate as needed
 model.compile(optimizer=optimizer, loss='categorical_crossentropy', metrics=['accuracy'])
 
 # Load class names
-with open('./model/labels.txt', 'r') as f:
-    class_names = [a[:-1].split(' ')[1] for a in f.readlines()]
-    f.close()
+def diagnosis(file, model, IMM_SIZE):
+    # Load and preprocess the image
+    img = image.load_img(file, target_size=(IMM_SIZE, IMM_SIZE), color_mode="grayscale")
+    img_array = image.img_to_array(img)
+    img_array = np.expand_dims(img_array, axis=0)
+    img_array /= 255.0  # Normalize to [0, 1]
+
+    # Predict the diagnosis
+    predicted_probabilities = model.predict(img_array)
+    predicted_class = np.argmax(predicted_probabilities, axis=-1)[0]
+
+    # Map the predicted class to the diagnosis
+    diagnosis_mapping = {0: "Normal", 1: "Covid", 2: "Viral Pneumonia"}
+    predicted_diagnosis = diagnosis_mapping[predicted_class]
+
+    return predicted_diagnosis
 
 # Display image
 if file is not None:
