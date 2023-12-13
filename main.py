@@ -49,7 +49,3 @@ if file is not None:
     image = Image.open(file).convert('RGB')
     st.image(image, use_column_width=True)
 
-
-    # Write classification
-    st.write("## {}".format(class_name))
-    st.write("### score: {}%".format(int(conf_score * 1000) / 10))
